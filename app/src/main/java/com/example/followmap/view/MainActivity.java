@@ -2,13 +2,14 @@ package com.example.followmap.view;
 
 import android.os.Bundle;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.activity.EdgeToEdge;
-
 import com.example.followmap.R;
+import com.example.followmap.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
