@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        binding.tvCadastrar.setOnClickListener(new View.OnClickListener() {
+        binding.btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(MainActivity.this, RegistroDeUsuarioActivity.class);
