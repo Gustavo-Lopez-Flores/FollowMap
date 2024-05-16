@@ -35,7 +35,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilSenha"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/dark_green">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtSenha"
