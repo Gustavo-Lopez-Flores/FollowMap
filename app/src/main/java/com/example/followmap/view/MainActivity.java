@@ -1,10 +1,12 @@
-package com.example.followmap;
+package com.example.followmap.view;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.activity.EdgeToEdge;
+
+import com.example.followmap.R;
 
 public class MainActivity extends AppCompatActivity {
 
