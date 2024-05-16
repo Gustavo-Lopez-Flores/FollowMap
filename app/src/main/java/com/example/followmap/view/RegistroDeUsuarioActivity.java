@@ -2,20 +2,21 @@ package com.example.followmap.view;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.followmap.R;
+import com.example.followmap.database.LocalDatabase;
+import com.example.followmap.databinding.ActivityRegistroDeUsuarioBinding;
 
 public class RegistroDeUsuarioActivity extends AppCompatActivity {
+    private LocalDatabase db;
+    private ActivityRegistroDeUsuarioBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_registro_de_usuario);
+        binding = ActivityRegistroDeUsuarioBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        db = LocalDatabase.getDatabase(getApplicationContext());
     }
 }
