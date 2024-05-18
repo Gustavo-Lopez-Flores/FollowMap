@@ -17,14 +17,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        binding.btnEntrar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Intent it = new Intent(MainActivity.this, ...);
-//            }
-//        });
-
-        binding.btnRegistrar.setOnClickListener(new View.OnClickListener() {
+        binding.tvCriarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(MainActivity.this, RegistroDeUsuarioActivity.class);
