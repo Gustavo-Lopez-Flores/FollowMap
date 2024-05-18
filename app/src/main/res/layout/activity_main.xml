@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:paddingBottom="32dp"
-            android:text="Login"
+            android:text="@string/login"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -36,7 +36,7 @@
                 android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="E-mail"
+                android:hint="@string/email"
                 android:inputType="text|textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -52,7 +52,7 @@
                 android:id="@+id/edtConfirmaSenha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Senha"
+                android:hint="@string/senha"
                 android:inputType="text|textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/light_green"
-            android:text="Entrar" />
+            android:text="@string/entrar" />
 
         <TextView
             android:id="@+id/tvCriarConta"
@@ -70,7 +70,7 @@
             android:layout_gravity="center_horizontal"
             android:clickable="true"
             android:paddingTop="16dp"
-            android:text="Não tem uma conta? Cadastre-se"
+            android:text="@string/fazer_cadastro"
             android:textStyle="bold" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

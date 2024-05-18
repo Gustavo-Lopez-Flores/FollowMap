@@ -2,7 +2,8 @@
     <string name="app_name">FollowMap</string>
     <!-- Login e Cadastro -->
     <string name="login">Login</string>
-    <string name="cadastro">Cadastro</string>
+    <string name="cadastro">Criar Conta</string>
+    <string name="nome">Nome</string>
     <string name="email">E-mail</string>
     <string name="senha">Senha</string>
     <string name="confirma_senha">Confirmar Senha</string>
