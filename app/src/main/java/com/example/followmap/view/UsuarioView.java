@@ -68,5 +68,7 @@ public class UsuarioView extends AppCompatActivity {
             db.usuarioDao().insert(usuario);
             Toast.makeText(this, "Usuário cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
         }
+        
+        finish();
     }
 }
