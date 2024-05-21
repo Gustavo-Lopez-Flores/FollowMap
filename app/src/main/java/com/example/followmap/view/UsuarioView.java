@@ -46,5 +46,10 @@ public class UsuarioView extends AppCompatActivity {
             Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if(!senha.equals(confirmaSenha)){
+            Toast.makeText(this, "As senhas não coincidem.", Toast.LENGTH_SHORT).show();
+            return;
+        }
     }
 }
