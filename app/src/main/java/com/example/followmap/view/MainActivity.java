@@ -47,5 +47,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.tilEmail.setError("Email inválido.");
+            return;
+        } else {
+            binding.tilEmail.setError(null);
+        }
     }
 }
