@@ -26,6 +26,13 @@ public class RegistroDeUsuarioActivity extends AppCompatActivity {
                 registrarUsuario();
             }
         });
+
+        binding.btnFazerLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void registrarUsuario() {
