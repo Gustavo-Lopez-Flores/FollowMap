@@ -21,4 +21,10 @@ public interface UsuarioDao {
     void delete(Usuario usuario);
 
     @Query("SELECT * FROM Usuario WHERE email = :email AND senha = :senha")
-    Usuario login(String email, String senha);}
+    Usuario login(String email, String senha);
+
+    @Query("SELECT * FROM Usuario WHERE email = :email")
+    Usuario getEmail(String email);
+}
+
+

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.followmap.database.LocalDatabase;
 import com.example.followmap.databinding.ActivityUsuarioViewBinding;
-import com.example.followmap.databinding.ActivityUsuarioViewBinding;
+import com.example.followmap.entities.Usuario;
 
 public class UsuarioView extends AppCompatActivity {
     private LocalDatabase db;
@@ -58,6 +58,15 @@ public class UsuarioView extends AppCompatActivity {
             return;
         } else {
             binding.tilEmail.setError(null);
+        }
+
+        if(db.usuarioDao().getEmail(email)!=null){
+            Toast.makeText(this, "E-mail já cadastrado!", Toast.LENGTH_SHORT).show();
+            return;
+        }else{
+            Usuario usuario = new Usuario(nome, email, senha);
+            db.usuarioDao().insert(usuario);
+            Toast.makeText(this, "Usuário cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
         }
     }
 }
