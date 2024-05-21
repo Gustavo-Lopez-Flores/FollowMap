@@ -8,8 +8,6 @@ import androidx.room.Update;
 
 import com.example.followmap.entities.Usuario;
 
-import java.util.List;
-
 @Dao
 public interface UsuarioDao {
 
