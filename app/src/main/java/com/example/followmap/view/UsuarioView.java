@@ -51,5 +51,12 @@ public class UsuarioView extends AppCompatActivity {
             Toast.makeText(this, "As senhas não coincidem.", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.tilEmail.setError("Email inválido.");
+            return;
+        } else {
+            binding.tilEmail.setError(null);
+        }
     }
 }
