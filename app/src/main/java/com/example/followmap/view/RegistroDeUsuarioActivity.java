@@ -1,6 +1,7 @@
 package com.example.followmap.view;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,5 +19,15 @@ public class RegistroDeUsuarioActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         db = LocalDatabase.getDatabase(getApplicationContext());
+
+        binding.btnCriarConta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registrarUsuario();
+            }
+        });
+    }
+
+    private void registrarUsuario() {
     }
 }
