@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.followmap.dao.UsuarioDao;
+
 public abstract class LocalDatabase extends RoomDatabase{
     private static LocalDatabase INSTANCE;
 
@@ -15,4 +17,5 @@ public abstract class LocalDatabase extends RoomDatabase{
         }
         return INSTANCE;
     }
+    public abstract UsuarioDao usuarioModel();
 }
