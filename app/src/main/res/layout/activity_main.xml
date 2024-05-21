@@ -24,6 +24,7 @@
             android:layout_gravity="center_horizontal"
             android:paddingBottom="32dp"
             android:text="@string/login"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -36,9 +37,11 @@
                 android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/gray"
                 android:hint="@string/email"
-                android:inputType="text|textEmailAddress" />
+                android:inputType="text|textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorLink="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,9 +56,12 @@
                 android:id="@+id/edtSenha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/gray"
                 android:hint="@string/senha"
-                android:inputType="text|textPassword" />
+                android:inputType="text|textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dark_green"
+                android:textColorLink="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -70,7 +76,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:backgroundTint="@color/light_green"
-                android:text="@string/entrar" />
+                android:text="@string/entrar"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/btnCriarConta"
@@ -78,7 +85,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/light_green"
-                android:text="@string/fazer_cadastro" />
+                android:text="@string/fazer_cadastro"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
