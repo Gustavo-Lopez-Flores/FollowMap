@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.followmap.database.LocalDatabase;
 import com.example.followmap.databinding.ActivityRegistroDeUsuarioBinding;
 
-public class RegistroDeUsuarioActivity extends AppCompatActivity {
+public class UsuarioView extends AppCompatActivity {
     private LocalDatabase db;
     private ActivityRegistroDeUsuarioBinding binding;
 

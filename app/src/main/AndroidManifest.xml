@@ -13,7 +13,7 @@
         android:theme="@style/Theme.FollowMap"
         tools:targetApi="31">
         <activity
-            android:name=".view.RegistroDeUsuarioActivity"
+            android:name=".view.UsuarioView"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"
