@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.followmap.database.LocalDatabase;
 import com.example.followmap.databinding.ActivityMainBinding;
+import com.example.followmap.entities.Usuario;
 
 public class MainActivity extends AppCompatActivity {
     private LocalDatabase db;
@@ -52,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
             return;
         } else {
             binding.tilEmail.setError(null);
+        }
+
+        if(db.usuarioDao().login(email, senha)!=null){
+            Toast.makeText(MainActivity.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, HomeView.class);
+            startActivity(intent);
+            finish();
+        }else{
+            Toast.makeText(MainActivity.this, "Email ou senha incorretos.", Toast.LENGTH_SHORT).show();
         }
     }
 }
