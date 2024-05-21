@@ -2,6 +2,7 @@ package com.example.followmap.view;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,5 +37,14 @@ public class UsuarioView extends AppCompatActivity {
     }
 
     private void registrarUsuario() {
+        String nome = binding.edtNome.getText().toString().trim();
+        String email = binding.edtEmail.getText().toString().trim();
+        String senha = binding.edtSenha.getText().toString().trim();
+        String confirmaSenha = binding.edtConfirmaSenha.getText().toString().trim();
+
+        if(nome.isEmpty() || email.isEmpty() || senha.isEmpty() || confirmaSenha.isEmpty()){
+            Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
+            return;
+        }
     }
 }
