@@ -3,6 +3,7 @@ package com.example.followmap.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,5 +39,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fazerLogin() {
+        String email = binding.edtEmail.getText().toString().trim();
+        String senha = binding.edtSenha.getText().toString().trim();
+
+        if (email.isEmpty() || senha.isEmpty()) {
+            Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
     }
 }
