@@ -6,9 +6,11 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.followmap.database.LocalDatabase;
 import com.example.followmap.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+    private LocalDatabase db;
     private ActivityMainBinding binding;
 
     @Override
@@ -17,6 +19,15 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        db = LocalDatabase.getDatabase(getApplicationContext());
+
+        binding.btnFazerLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fazerLogin();
+            }
+        });
+        
         binding.btnCriarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,5 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
+    }
+
+    private void fazerLogin() {
     }
 }
