@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(db.usuarioDao().login(email, senha)!=null){
             Toast.makeText(MainActivity.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, HomeView.class);
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
             startActivity(intent);
             finish();
         }else{
