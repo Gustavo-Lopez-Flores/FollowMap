@@ -2,6 +2,7 @@ package com.example.followmap.view;
 
 import android.os.Bundle;
 
+import com.example.followmap.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
