@@ -10,7 +10,7 @@ import com.example.followmap.database.LocalDatabase;
 import com.example.followmap.databinding.ActivityUsuarioViewBinding;
 import com.example.followmap.entities.Usuario;
 
-public class UsuarioView extends AppCompatActivity {
+public class UsuarioActivity extends AppCompatActivity {
     private LocalDatabase db;
     private ActivityUsuarioViewBinding binding;
 

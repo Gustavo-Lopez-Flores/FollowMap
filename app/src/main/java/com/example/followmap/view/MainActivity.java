@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.followmap.database.LocalDatabase;
 import com.example.followmap.databinding.ActivityMainBinding;
-import com.example.followmap.entities.Usuario;
 
 public class MainActivity extends AppCompatActivity {
     private LocalDatabase db;
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         binding.btnCriarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(MainActivity.this, UsuarioView.class);
+                Intent it = new Intent(MainActivity.this, UsuarioActivity.class);
                 startActivity(it);
             }
         });

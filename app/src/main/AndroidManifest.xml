@@ -20,7 +20,7 @@
             android:name=".view.HomeView"
             android:exported="false" />
         <activity
-            android:name=".view.UsuarioView"
+            android:name=".view.UsuarioActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"
