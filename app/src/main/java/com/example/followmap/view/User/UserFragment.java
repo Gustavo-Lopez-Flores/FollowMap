@@ -1,4 +1,4 @@
-package com.example.followmap.view.ui.notifications;
+package com.example.followmap.view.User;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,14 +12,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.followmap.databinding.FragmentNotificationsBinding;
 
-public class NotificationsFragment extends Fragment {
+public class UserFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        NotificationsViewModel notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+        UserViewModel notificationsViewModel =
+                new ViewModelProvider(this).get(UserViewModel.class);
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
