@@ -11,8 +11,9 @@
     <string name="registrar">Registrar</string>
     <string name="fazer_login">Realizar login</string>
     <string name="fazer_cadastro">Registrar-se</string>
+    <!-- Fragmentos -->
     <string name="title_activity_home">HomeActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_city">Home</string>
+    <string name="title_address">Dashboard</string>
+    <string name="title_user">Notifications</string>
 </resources>
