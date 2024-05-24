@@ -13,7 +13,7 @@
     <string name="fazer_cadastro">Registrar-se</string>
     <!-- Fragmentos -->
     <string name="title_activity_home">HomeActivity</string>
-    <string name="title_city">Home</string>
-    <string name="title_address">Dashboard</string>
-    <string name="title_user">Notifications</string>
+    <string name="title_city">City</string>
+    <string name="title_address">Address</string>
+    <string name="title_user">User</string>
 </resources>
