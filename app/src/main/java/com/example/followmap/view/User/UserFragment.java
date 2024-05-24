@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.followmap.databinding.FragmentNotificationsBinding;
+import com.example.followmap.databinding.FragmentUserBinding;
 
 public class UserFragment extends Fragment {
 
-    private FragmentNotificationsBinding binding;
+    private FragmentUserBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         UserViewModel notificationsViewModel =
                 new ViewModelProvider(this).get(UserViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentUserBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textNotifications;

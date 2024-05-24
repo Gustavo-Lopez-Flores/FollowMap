@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.followmap.databinding.FragmentHomeBinding;
+import com.example.followmap.databinding.FragmentCityBinding;
 
 public class CityFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentCityBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         CityViewModel homeViewModel =
                 new ViewModelProvider(this).get(CityViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentCityBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;
