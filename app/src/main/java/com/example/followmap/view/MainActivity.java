@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         binding.btnCriarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(MainActivity.this, UsuarioActivity.class);
+                Intent it = new Intent(MainActivity.this, UserActivity.class);
                 startActivity(it);
             }
         });
