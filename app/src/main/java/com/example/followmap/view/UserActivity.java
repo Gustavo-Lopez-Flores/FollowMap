@@ -7,17 +7,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.followmap.database.LocalDatabase;
-import com.example.followmap.databinding.ActivityUsuarioViewBinding;
+import com.example.followmap.databinding.ActivityUserBinding;
 import com.example.followmap.entities.Usuario;
 
 public class UserActivity extends AppCompatActivity {
     private LocalDatabase db;
-    private ActivityUsuarioViewBinding binding;
+    private ActivityUserBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityUsuarioViewBinding.inflate(getLayoutInflater());
+        binding = ActivityUserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         db = LocalDatabase.getDatabase(getApplicationContext());
