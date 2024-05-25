@@ -12,22 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FollowMap"
         tools:targetApi="31">
-        <activity
-            android:name=".view.HomeActivity"
-            android:exported="false"
-            android:label="@string/title_activity_home" />
-        <activity
-            android:name=".view.UserActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.MainActivity"
+
+        <!-- MainActivity é a atividade de entrada -->
+        <activity android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- RegistroDeUsuarioActivity para registrar novos usuários -->
+        <activity android:name=".view.UserActivity" />
+
+        <!-- HomeActivity com BottomNavigationView -->
+        <activity android:name=".view.HomeActivity" />
     </application>
 
 </manifest>
