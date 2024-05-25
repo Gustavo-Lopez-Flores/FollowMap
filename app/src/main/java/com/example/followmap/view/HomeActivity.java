@@ -31,8 +31,11 @@ public class HomeActivity extends AppCompatActivity {
                 R.id.navigation_city, R.id.navigation_address, R.id.navigation_user)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_home);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_home);
+        return navController.navigateUp() || super.onSupportNavigateUp();
+    }
 }
