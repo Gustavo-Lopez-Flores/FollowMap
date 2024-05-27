@@ -28,6 +28,9 @@
     <!-- Fragmento Address-->
     <string name="btn_address">Adicionar Endereço</string>
     <string name="crud_address">CRUD Endereço</string>
+    <string name="txt_descricao">Descrição</string>
+    <string name="txt_latitude">Latitude</string>
+    <string name="txt_longitude">Longitude</string>
     <!-- CRUD-->
     <string name="salvar">Salvar</string>
     <string name="excluir">Excluir</string>
