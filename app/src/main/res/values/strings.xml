@@ -11,9 +11,11 @@
     <string name="registrar">Registrar</string>
     <string name="fazer_login">Realizar login</string>
     <string name="fazer_cadastro">Registrar-se</string>
-    <!-- Fragmentos: City -->
+    <!-- Fragmentos: City, Address e User -->
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_city">City</string>
     <string name="title_address">Address</string>
     <string name="title_user">User</string>
+    <!-- Fragmento User-->
+    <string name="btn_usuarios">Adicionar Usuário</string>
 </resources>
