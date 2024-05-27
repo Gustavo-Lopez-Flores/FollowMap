@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.followmap.databinding.FragmentUserBinding;
 import com.example.followmap.entities.Usuario;
+import com.example.followmap.view.MainActivity;
 
 import java.util.List;
 
@@ -35,6 +36,14 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), UserView.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
