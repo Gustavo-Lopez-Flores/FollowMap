@@ -13,9 +13,11 @@
         android:theme="@style/Theme.FollowMap"
         tools:targetApi="31">
         <activity
-            android:name=".view.User.UserView"
+            android:name=".view.City.CityView"
             android:exported="false" />
-        <!-- MainActivity é a atividade de entrada -->
+        <activity
+            android:name=".view.User.UserView"
+            android:exported="false" /> <!-- MainActivity é a atividade de entrada -->
         <activity
             android:name=".view.MainActivity"
             android:exported="true">
