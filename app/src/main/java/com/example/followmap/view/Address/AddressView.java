@@ -44,7 +44,11 @@ public class AddressView extends AppCompatActivity implements OnMapReadyCallback
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapView);
-        mapFragment.getMapAsync(this);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        } else {
+            Toast.makeText(this, "Erro ao carregar o mapa.", Toast.LENGTH_SHORT).show();
+        }
 
         binding.btnSalvarEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,11 +67,18 @@ public class AddressView extends AppCompatActivity implements OnMapReadyCallback
         binding.btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                lati = Double.parseDouble(binding.edtLatitude.getText().toString());
-                longi = Double.parseDouble(binding.edtLongitude.getText().toString());
-                descricao = binding.edtDescricao.getText().toString();
-                mapFragment.getMapAsync(AddressView.this);
+                try {
+                    lati = Double.parseDouble(binding.edtLatitude.getText().toString());
+                    longi = Double.parseDouble(binding.edtLongitude.getText().toString());
+                    descricao = binding.edtDescricao.getText().toString();
+                    if (mMap != null) {
+                        updateMap();
+                    } else {
+                        mapFragment.getMapAsync(AddressView.this);
+                    }
+                } catch (NumberFormatException e) {
+                    Toast.makeText(AddressView.this, "Valores de latitude e longitude inválidos.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -161,12 +172,15 @@ public class AddressView extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
+        updateMap();
+    }
+
+    private void updateMap() {
         LatLng latLng = new LatLng(lati, longi);
+        mMap.clear();
         mMap.addMarker(new MarkerOptions().position(latLng).title(descricao));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,
-                15));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
     }
 }
