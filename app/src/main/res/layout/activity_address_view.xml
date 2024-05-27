@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/gray"
                 android:hint="@string/txt_latitude"
-                android:inputType="number|numberDecimal"
+                android:inputType="number|numberDecimal|numberSigned"
                 android:textColor="@color/black"
                 android:textColorLink="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/gray"
                 android:hint="@string/txt_longitude"
-                android:inputType="number|numberDecimal"
+                android:inputType="number|numberDecimal|numberSigned"
                 android:textColor="@color/black"
                 android:textColorLink="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
