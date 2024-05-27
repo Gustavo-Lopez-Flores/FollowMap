@@ -2,25 +2,27 @@ package com.example.followmap.view.User;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.followmap.R;
+import com.example.followmap.database.LocalDatabase;
+import com.example.followmap.databinding.ActivityUserViewBinding;
+import com.example.followmap.entities.Usuario;
 
 public class UserView extends AppCompatActivity {
+    private LocalDatabase db;
+    private ActivityUserViewBinding binding;
+    private int dbUsuarioID;
+    private Usuario dbUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_user_view);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        binding = ActivityUserViewBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        db = LocalDatabase.getDatabase(getApplicationContext());
+
+        dbUsuarioID = getIntent().getIntExtra("USUARIO_SELECIONADO_ID", -1);
     }
+
 }
