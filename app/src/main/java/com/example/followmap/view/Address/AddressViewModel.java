@@ -10,12 +10,13 @@ import androidx.lifecycle.ViewModel;
 import com.example.followmap.database.LocalDatabase;
 import com.example.followmap.entities.Cidade;
 import com.example.followmap.entities.Endereco;
+import com.example.followmap.entities.EnderecoComCidade;
 
 import java.util.List;
 
 public class AddressViewModel extends AndroidViewModel {
 
-    private final MutableLiveData<List<Endereco>> enderecos;
+    private final MutableLiveData<List<EnderecoComCidade>> enderecos;
     private final LocalDatabase db;
 
     public AddressViewModel(Application application) {
@@ -26,11 +27,11 @@ public class AddressViewModel extends AndroidViewModel {
     }
 
     private void carregarEnderecos() {
-        List<Endereco> addressList = db.enderecoDao().getAllEnderecos();
+        List<EnderecoComCidade> addressList = db.enderecoDao().getEnderecosComCidade();
         enderecos.setValue(addressList);
     }
 
-    public LiveData<List<Endereco>> getEnderecos() {
+    public LiveData<List<EnderecoComCidade>> getEnderecos() {
         return enderecos;
     }
 }

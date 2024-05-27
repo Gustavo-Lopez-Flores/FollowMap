@@ -2,6 +2,7 @@ package com.example.followmap.entities;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "enderecos",
@@ -17,12 +18,22 @@ public class Endereco {
     private double latitude;
     private double longitude;
     private int cidadeId;
+    @Ignore
+    private String cidadeNome;
 
     public Endereco(String descricao, double latitude, double longitude, int cidadeId) {
         this.descricao = descricao;
         this.latitude = latitude;
         this.longitude = longitude;
         this.cidadeId = cidadeId;
+    }
+
+    public String getCidadeNome() {
+        return cidadeNome;
+    }
+
+    public void setCidadeNome(String cidadeNome) {
+        this.cidadeNome = cidadeNome;
     }
 
     public int getEnderecoId() {

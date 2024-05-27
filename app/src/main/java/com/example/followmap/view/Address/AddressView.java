@@ -14,6 +14,7 @@ import com.example.followmap.database.LocalDatabase;
 import com.example.followmap.databinding.ActivityAddressViewBinding;
 import com.example.followmap.entities.Cidade;
 import com.example.followmap.entities.Endereco;
+import com.example.followmap.entities.EnderecoComCidade;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -28,6 +29,7 @@ public class AddressView extends AppCompatActivity implements OnMapReadyCallback
     private ActivityAddressViewBinding binding;
     private int dbEnderecoID;
     private Endereco dbEndereco;
+    private EnderecoComCidade dbEnderecoComCidade;
     private List<Cidade> cidades;
     private GoogleMap mMap;
     private MapView mapView;
@@ -127,7 +129,10 @@ public class AddressView extends AppCompatActivity implements OnMapReadyCallback
     }
 
     private void getDBEndereco() {
-        dbEndereco = db.enderecoDao().getEndereco(dbEnderecoID);
+        dbEnderecoComCidade = db.enderecoDao().getEnderecoComCidadeById(dbEnderecoID);
+        dbEndereco = dbEnderecoComCidade.endereco;
+        dbEndereco.setCidadeNome(dbEnderecoComCidade.cidade.getCidade());
+
         binding.edtDescricao.setText(dbEndereco.getDescricao());
         binding.edtLatitude.setText(String.valueOf(dbEndereco.getLatitude()));
         binding.edtLongitude.setText(String.valueOf(dbEndereco.getLongitude()));

@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.followmap.databinding.FragmentAddressBinding;
 import com.example.followmap.databinding.FragmentCityBinding;
 import com.example.followmap.entities.Endereco;
+import com.example.followmap.entities.EnderecoComCidade;
 import com.example.followmap.view.City.CityViewModel;
 import com.example.followmap.view.User.UserView;
 
@@ -60,17 +61,17 @@ public class AddressFragment extends Fragment {
     }
 
     private void preencheEnderecos() {
-        addressViewModel.getEnderecos().observe(getViewLifecycleOwner(), new Observer<List<Endereco>>() {
+        addressViewModel.getEnderecos().observe(getViewLifecycleOwner(), new Observer<List<EnderecoComCidade>>() {
             @Override
-            public void onChanged(List<Endereco> enderecos) {
-                ArrayAdapter<Endereco> enderecosAdapter = new ArrayAdapter<>(getContext(),
+            public void onChanged(List<EnderecoComCidade> enderecos) {
+                ArrayAdapter<EnderecoComCidade> enderecosAdapter = new ArrayAdapter<>(getContext(),
                         android.R.layout.simple_list_item_1, enderecos);
                 listViewEnderecos.setAdapter(enderecosAdapter);
 
                 listViewEnderecos.setOnItemClickListener((parent, view, position, id) -> {
-                    Endereco enderecoSelecionado = enderecos.get(position);
+                    EnderecoComCidade enderecoSelecionado = enderecos.get(position);
                     Intent intent = new Intent(getActivity(), AddressView.class);
-                    intent.putExtra("ENDERECO_SELECIONADO_ID", enderecoSelecionado.getEnderecoId());
+                    intent.putExtra("ENDERECO_SELECIONADO_ID", enderecoSelecionado.endereco.getEnderecoId());
                     startActivity(intent);
                 });
             }
