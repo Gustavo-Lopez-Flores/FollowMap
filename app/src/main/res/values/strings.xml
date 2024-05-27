@@ -19,6 +19,12 @@
     <!-- Fragmento User-->
     <string name="btn_usuarios">Adicionar Usuário</string>
     <string name="crud_usuario">CRUD Usuário</string>
+    <!-- Fragmento City-->
+    <string name="btn_city">Adicionar Cidade</string>
+    <string name="crud_city">CRUD Cidade</string>
+    <!-- Fragmento Address-->
+    <string name="btn_address">Adicionar Endereço</string>
+    <string name="crud_address">CRUD Endereço</string>
     <!-- CRUD-->
     <string name="salvar">Salvar</string>
     <string name="excluir">Excluir</string>
