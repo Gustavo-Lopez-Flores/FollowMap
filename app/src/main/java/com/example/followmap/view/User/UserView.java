@@ -1,6 +1,7 @@
 package com.example.followmap.view.User;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,4 +26,18 @@ public class UserView extends AppCompatActivity {
         dbUsuarioID = getIntent().getIntExtra("USUARIO_SELECIONADO_ID", -1);
     }
 
+    protected void onResume() {
+        super.onResume();
+        if(dbUsuarioID >= 0) {
+            getDBUsuario();
+        } else {
+            binding.btnExcluirUsuario.setVisibility(View.GONE);
+        }
+    }
+    private void getDBUsuario() {
+        dbUsuario = db.usuarioDao().getUsuario(dbUsuarioID);
+        binding.edtNomeUsuario.setText(dbUsuario.getNome());
+        binding.edtEmailUsuario.setText(dbUsuario.getEmail());
+        binding.edtSenhaUsuario.setText(dbUsuario.getSenha());
+    }
 }
