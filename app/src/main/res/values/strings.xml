@@ -23,6 +23,8 @@
     <!-- Fragmento City-->
     <string name="btn_city">Adicionar Cidade</string>
     <string name="crud_city">CRUD Cidade</string>
+    <string name="txt_city">Cidade</string>
+    <string name="txt_state">Estado</string>
     <!-- Fragmento Address-->
     <string name="btn_address">Adicionar Endereço</string>
     <string name="crud_address">CRUD Endereço</string>

@@ -26,6 +26,27 @@ public class CityView extends AppCompatActivity {
 
         db = LocalDatabase.getDatabase(getApplicationContext());
         dbCidadeID = getIntent().getIntExtra("CIDADE_SELECIONADA_ID", -1);
+
+        binding.btnSalvarCidade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salvarCidade();
+            }
+        });
+
+        binding.btnExcluirCidade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                excluirCidade();
+            }
+        });
+
+        binding.btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                voltar();
+            }
+        });
     }
 
     @Override
@@ -39,16 +60,12 @@ public class CityView extends AppCompatActivity {
     }
 
     private void getDBCidade() {
-        new Thread(() -> {
-            dbCidade = db.cidadeDao().getCidade(dbCidadeID);
-            runOnUiThread(() -> {
-                binding.edtCidade.setText(dbCidade.getCidade());
-                binding.edtEstado.setText(dbCidade.getEstado());
-            });
-        }).start();
+        dbCidade = db.cidadeDao().getCidade(dbCidadeID);
+        binding.edtCidade.setText(dbCidade.getCidade());
+        binding.edtEstado.setText(dbCidade.getEstado());
     }
 
-    public void salvarCidade(View view) {
+    public void salvarCidade() {
         String nomeCidade = binding.edtCidade.getText().toString();
         String estadoCidade = binding.edtEstado.getText().toString();
         if (nomeCidade.equals("") || estadoCidade.equals("")) {
@@ -58,20 +75,18 @@ public class CityView extends AppCompatActivity {
 
         Cidade thisCidade = new Cidade(nomeCidade, estadoCidade);
 
-        new Thread(() -> {
-            if (dbCidade != null) {
-                thisCidade.setCidadeId(dbCidadeID);
-                db.cidadeDao().update(thisCidade);
-                runOnUiThread(() -> Toast.makeText(this, "Cidade atualizada com sucesso.", Toast.LENGTH_SHORT).show());
-            } else {
-                db.cidadeDao().insertAll(thisCidade);
-                runOnUiThread(() -> Toast.makeText(this, "Cidade criada com sucesso.", Toast.LENGTH_SHORT).show());
-            }
-            finish();
-        }).start();
+        if (dbCidade != null) {
+            thisCidade.setCidadeId(dbCidadeID);
+            db.cidadeDao().update(thisCidade);
+            Toast.makeText(this, "Cidade atualizada com sucesso.", Toast.LENGTH_SHORT).show();
+        } else {
+            db.cidadeDao().insertAll(thisCidade);
+            Toast.makeText(this, "Cidade criada com sucesso.", Toast.LENGTH_SHORT).show();
+        }
+        finish();
     }
 
-    public void excluirCidade(View view) {
+    public void excluirCidade() {
         new AlertDialog.Builder(this)
                 .setTitle("Exclusão de Cidade")
                 .setMessage("Deseja excluir essa cidade?")
@@ -81,18 +96,12 @@ public class CityView extends AppCompatActivity {
     }
 
     private void excluir() {
-        new Thread(() -> {
-            if (db.enderecoDao().getAllEnderecos().stream().anyMatch(endereco -> endereco.getCidadeId() == dbCidadeID)) {
-                runOnUiThread(() -> Toast.makeText(this, "Impossível excluir cidade com endereços cadastrados", Toast.LENGTH_SHORT).show());
-            } else {
-                db.cidadeDao().delete(dbCidade);
-                runOnUiThread(() -> Toast.makeText(this, "Cidade excluída com sucesso", Toast.LENGTH_SHORT).show());
-            }
-            finish();
-        }).start();
+        db.cidadeDao().delete(dbCidade);
+        Toast.makeText(this, "Cidade excluída com sucesso", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
-    public void voltar(View view) {
+    public void voltar() {
         finish();
     }
 }
