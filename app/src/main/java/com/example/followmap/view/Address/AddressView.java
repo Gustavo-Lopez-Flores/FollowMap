@@ -16,8 +16,8 @@ import com.example.followmap.entities.Cidade;
 import com.example.followmap.entities.Endereco;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -30,6 +30,7 @@ public class AddressView extends AppCompatActivity implements OnMapReadyCallback
     private Endereco dbEndereco;
     private List<Cidade> cidades;
     private GoogleMap mMap;
+    private MapView mapView;
     private double lati = -34, longi = 151;
     private String descricao = "Marker in Sydney";
 
@@ -42,13 +43,9 @@ public class AddressView extends AppCompatActivity implements OnMapReadyCallback
         db = LocalDatabase.getDatabase(getApplicationContext());
         dbEnderecoID = getIntent().getIntExtra("ENDERECO_SELECIONADO_ID", -1);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.mapView);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        } else {
-            Toast.makeText(this, "Erro ao carregar o mapa.", Toast.LENGTH_SHORT).show();
-        }
+        mapView = findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this);
 
         binding.btnSalvarEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +70,6 @@ public class AddressView extends AppCompatActivity implements OnMapReadyCallback
                     descricao = binding.edtDescricao.getText().toString();
                     if (mMap != null) {
                         updateMap();
-                    } else {
-                        mapFragment.getMapAsync(AddressView.this);
                     }
                 } catch (NumberFormatException e) {
                     Toast.makeText(AddressView.this, "Valores de latitude e longitude inválidos.", Toast.LENGTH_SHORT).show();
@@ -93,10 +88,35 @@ public class AddressView extends AppCompatActivity implements OnMapReadyCallback
     @Override
     protected void onResume() {
         super.onResume();
+        mapView.onResume();
         loadCidades();
         if (dbEnderecoID >= 0) {
             getDBEndereco();
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        mMap = googleMap;
+        updateMap();
     }
 
     private void loadCidades() {
@@ -167,12 +187,6 @@ public class AddressView extends AppCompatActivity implements OnMapReadyCallback
 
     public void voltar() {
         finish();
-    }
-
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        mMap = googleMap;
-        updateMap();
     }
 
     private void updateMap() {
