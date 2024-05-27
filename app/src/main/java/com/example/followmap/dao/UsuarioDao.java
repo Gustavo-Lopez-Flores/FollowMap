@@ -8,6 +8,8 @@ import androidx.room.Update;
 
 import com.example.followmap.entities.Usuario;
 
+import java.util.List;
+
 @Dao
 public interface UsuarioDao {
 
@@ -25,6 +27,12 @@ public interface UsuarioDao {
 
     @Query("SELECT * FROM Usuario WHERE email = :email")
     Usuario getEmail(String email);
+
+    @Query("SELECT * FROM Usuario")
+    List<Usuario> getAllUsuarios();
+
+    @Query("SELECT * FROM Usuario WHERE usuarioId = :id LIMIT 1")
+    Usuario getUsuario(int id);
 }
 
 
