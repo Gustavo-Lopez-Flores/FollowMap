@@ -19,6 +19,8 @@
     <!-- Fragmento User-->
     <string name="btn_usuarios">Adicionar Usuário</string>
     <string name="crud_usuario">CRUD Usuário</string>
-    <string name="salvar_usuario">Salvar</string>
-    <string name="excluir_usuario">Excluir</string>
+    <!-- CRUD-->
+    <string name="salvar">Salvar</string>
+    <string name="excluir">Excluir</string>
+    <string name="voltar">Voltar</string>
 </resources>

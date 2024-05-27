@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:backgroundTint="@color/light_green"
-                android:text="@string/salvar_usuario"
+                android:text="@string/salvar"
                 android:textColor="@color/white" />
 
             <Button
@@ -99,7 +99,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/light_green"
-                android:text="@string/excluir_usuario"
+                android:text="@string/excluir"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnVoltar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/light_green"
+                android:text="@string/voltar"
                 android:textColor="@color/white" />
 
         </LinearLayout>

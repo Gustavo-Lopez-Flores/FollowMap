@@ -1,9 +1,11 @@
 package com.example.followmap.view.User;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.followmap.database.LocalDatabase;
@@ -23,8 +25,28 @@ public class UserView extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         db = LocalDatabase.getDatabase(getApplicationContext());
-
         dbUsuarioID = getIntent().getIntExtra("USUARIO_SELECIONADO_ID", -1);
+
+        binding.btnSalvarUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salvarUsuario();
+            }
+        });
+
+        binding.btnExcluirUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                excluirUsuario();
+            }
+        });
+
+        binding.btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     protected void onResume() {
@@ -35,6 +57,7 @@ public class UserView extends AppCompatActivity {
             binding.btnExcluirUsuario.setVisibility(View.GONE);
         }
     }
+
     private void getDBUsuario() {
         dbUsuario = db.usuarioDao().getUsuario(dbUsuarioID);
         binding.edtNomeUsuario.setText(dbUsuario.getNome());
@@ -42,10 +65,10 @@ public class UserView extends AppCompatActivity {
         binding.edtSenhaUsuario.setText(dbUsuario.getSenha());
     }
 
-    public void salvarUsuario(View view) {
-        String nome = binding.edtNomeUsuario.getText().toString();
-        String email = binding.edtNomeUsuario.getText().toString();
-        String senha = binding.edtNomeUsuario.getText().toString();
+    public void salvarUsuario() {
+        String nome = binding.edtNomeUsuario.getText().toString().trim();
+        String email = binding.edtNomeUsuario.getText().toString().trim();
+        String senha = binding.edtNomeUsuario.getText().toString().trim();
 
         if(nome.isEmpty() || email.isEmpty() || senha.isEmpty()){
             Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
@@ -69,6 +92,26 @@ public class UserView extends AppCompatActivity {
             db.usuarioDao().insert(thisUsuario);
             Toast.makeText(this, "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
         }
+        finish();
+    }
+
+    public void excluirUsuario() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exclusão de Usuário")
+                .setMessage("Deseja excluir esse usuário?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        excluir();
+                    }
+                })
+                .setNegativeButton("Não", null)
+                .show();
+    }
+
+    private void excluir() {
+        db.usuarioDao().delete(dbUsuario);
+        Toast.makeText(this, "Usuário excluído com sucesso", Toast.LENGTH_SHORT).show();
         finish();
     }
 }
