@@ -106,21 +106,36 @@
                 android:id="@+id/btnExcluirEndereco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:backgroundTint="@color/light_green"
                 android:text="@string/excluir"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnBuscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/light_green"
+                android:text="@string/txt_buscar"
                 android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/btnVoltar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="0dp"
                 android:backgroundTint="@color/light_green"
                 android:text="@string/voltar"
                 android:textColor="@color/white" />
 
         </LinearLayout>
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="383dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
