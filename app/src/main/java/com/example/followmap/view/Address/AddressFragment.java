@@ -64,8 +64,18 @@ public class AddressFragment extends Fragment {
         addressViewModel.getEnderecos().observe(getViewLifecycleOwner(), new Observer<List<EnderecoComCidade>>() {
             @Override
             public void onChanged(List<EnderecoComCidade> enderecos) {
-                ArrayAdapter<EnderecoComCidade> enderecosAdapter = new ArrayAdapter<>(getContext(),
-                        android.R.layout.simple_list_item_1, enderecos);
+                ArrayAdapter<EnderecoComCidade> enderecosAdapter = new ArrayAdapter<EnderecoComCidade>(getContext(), android.R.layout.simple_list_item_1, enderecos) {
+                    @NonNull
+                    @Override
+                    public View getView(int position, @NonNull View convertView, @NonNull ViewGroup parent) {
+                        View view = super.getView(position, convertView, parent);
+                        TextView textView = (TextView) view.findViewById(android.R.id.text1);
+                        EnderecoComCidade endereco = enderecos.get(position);
+                        String textoParaExibir = endereco.endereco.getDescricao() + " - " + endereco.cidade.getCidade();
+                        textView.setText(textoParaExibir);
+                        return view;
+                    }
+                };
                 listViewEnderecos.setAdapter(enderecosAdapter);
 
                 listViewEnderecos.setOnItemClickListener((parent, view, position, id) -> {
