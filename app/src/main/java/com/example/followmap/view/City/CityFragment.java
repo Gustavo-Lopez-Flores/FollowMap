@@ -35,7 +35,7 @@ public class CityFragment extends Fragment {
         binding.btnAddCidade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), UserView.class);
+                Intent intent = new Intent(getActivity(), CityView.class);
                 startActivity(intent);
             }
         });
@@ -66,7 +66,7 @@ public class CityFragment extends Fragment {
 
                 listViewCidades.setOnItemClickListener((parent, view, position, id) -> {
                     Cidade cidadeSelecionada = cidades.get(position);
-                    Intent intent = new Intent(getActivity(), CidadeView.class);
+                    Intent intent = new Intent(getActivity(), CityView.class);
                     intent.putExtra("CIDADE_SELECIONADA_ID", cidadeSelecionada.getCidadeId());
                     startActivity(intent);
                 });
