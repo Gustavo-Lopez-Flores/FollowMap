@@ -30,6 +30,34 @@ public class AddressView extends AppCompatActivity {
 
         db = LocalDatabase.getDatabase(getApplicationContext());
         dbEnderecoID = getIntent().getIntExtra("ENDERECO_SELECIONADO_ID", -1);
+
+        binding.btnSalvarEndereco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salvarEndereco();
+            }
+        });
+
+        binding.btnExcluirEndereco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                excluirEndereco();
+            }
+        });
+
+        binding.btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                voltar();
+            }
+        });
+
+        binding.btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                voltar();
+            }
+        });
     }
 
     @Override
@@ -65,7 +93,7 @@ public class AddressView extends AppCompatActivity {
         }
     }
 
-    public void salvarEndereco(View view) {
+    public void salvarEndereco() {
         String descricao = binding.edtDescricao.getText().toString();
         String latitudeStr = binding.edtLatitude.getText().toString();
         String longitudeStr = binding.edtLongitude.getText().toString();
@@ -92,7 +120,7 @@ public class AddressView extends AppCompatActivity {
         finish();
     }
 
-    public void excluirEndereco(View view) {
+    public void excluirEndereco() {
         new AlertDialog.Builder(this)
                 .setTitle("Exclusão de Endereço")
                 .setMessage("Deseja excluir esse endereço?")
@@ -107,7 +135,7 @@ public class AddressView extends AppCompatActivity {
         finish();
     }
 
-    public void voltar(View view) {
+    public void voltar() {
         finish();
     }
 }
