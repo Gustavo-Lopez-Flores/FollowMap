@@ -67,8 +67,8 @@ public class UserView extends AppCompatActivity {
 
     public void salvarUsuario() {
         String nome = binding.edtNomeUsuario.getText().toString().trim();
-        String email = binding.edtNomeUsuario.getText().toString().trim();
-        String senha = binding.edtNomeUsuario.getText().toString().trim();
+        String email = binding.edtEmailUsuario.getText().toString().trim();
+        String senha = binding.edtSenhaUsuario.getText().toString().trim();
 
         if(nome.isEmpty() || email.isEmpty() || senha.isEmpty()){
             Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
@@ -76,10 +76,10 @@ public class UserView extends AppCompatActivity {
         }
 
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.edtEmailUsuario.setError("Email inválido.");
+            binding.tilEmail.setError("Email inválido.");
             return;
         } else {
-            binding.edtEmailUsuario.setError(null);
+            binding.tilEmail.setError(null);
         }
 
         Usuario thisUsuario = new Usuario(nome, email, senha);
