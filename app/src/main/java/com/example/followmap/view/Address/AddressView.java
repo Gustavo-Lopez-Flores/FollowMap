@@ -5,22 +5,33 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.followmap.R;
 import com.example.followmap.database.LocalDatabase;
 import com.example.followmap.databinding.ActivityAddressViewBinding;
 import com.example.followmap.entities.Cidade;
 import com.example.followmap.entities.Endereco;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
-public class AddressView extends AppCompatActivity {
+public class AddressView extends AppCompatActivity implements OnMapReadyCallback {
     private LocalDatabase db;
     private ActivityAddressViewBinding binding;
     private int dbEnderecoID;
     private Endereco dbEndereco;
     private List<Cidade> cidades;
+    private GoogleMap mMap;
+    private double lati = -34, longi = 151;
+    private String descricao = "Marker in Sydney";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +41,10 @@ public class AddressView extends AppCompatActivity {
 
         db = LocalDatabase.getDatabase(getApplicationContext());
         dbEnderecoID = getIntent().getIntExtra("ENDERECO_SELECIONADO_ID", -1);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mapView);
+        mapFragment.getMapAsync(this);
 
         binding.btnSalvarEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +63,11 @@ public class AddressView extends AppCompatActivity {
         binding.btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                voltar();
+
+                lati = Double.parseDouble(binding.edtLatitude.getText().toString());
+                longi = Double.parseDouble(binding.edtLongitude.getText().toString());
+                descricao = binding.edtDescricao.getText().toString();
+                mapFragment.getMapAsync(AddressView.this);
             }
         });
 
@@ -137,5 +156,17 @@ public class AddressView extends AppCompatActivity {
 
     public void voltar() {
         finish();
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        mMap = googleMap;
+        LatLng latLng = new LatLng(lati, longi);
+        mMap.addMarker(new MarkerOptions().position(latLng).title(descricao));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,
+                15));
     }
 }
